@@ -37,7 +37,7 @@ public class App
         }
         while (flag);
 
-        //try {
+        try {
             String url = "https://api.vk.com/method/users.get?";
             url += "user_ids=" + id;
             url += "&fields=sex,bdate,city,country,home_town,online,domain,has_mobile,contacts,site,education,universities,schools,status,last_seen,followers_count,common_count,occupation,nickname,relatives,relation,personal,connections,exports,wall_comments,activities,interests,music,movies,tv,books,games,about,quotes,timezone,career,military";
@@ -58,12 +58,10 @@ public class App
             }
             in.close();
 
-            System.out.println(response);
-
             Object obj2 = new JSONParser().parse(response.toString());
             JSONObject jo = (JSONObject) obj2;
             if (jo.containsKey("error")) {
-                System.out.println("Ошибка API\n");
+                System.out.println("Ошибка API");
                 jo = (JSONObject) jo.get("error");
                 System.out.println("Код ошибки: " + jo.get("error_code"));
                 System.out.println("Подробности: " + jo.get("error_msg"));
@@ -72,11 +70,11 @@ public class App
             for (int i = 0; i < jsonArray.size(); i++) {
                 System.out.println(userToString((JSONObject)jsonArray.get(i)));
             }
-        //} catch (UnknownHostException uhe) {
-        //    System.out.println("Ошибка подключения к серверу");
-        //} catch (Exception ex) {
-        //   System.out.println("Неизвестная ошибка");
-        //}
+        } catch (UnknownHostException uhe) {
+            System.out.println("Ошибка подключения к серверу");
+        } catch (Exception ex) {
+           System.out.println("Неизвестная ошибка");
+        }
     }
 
     public static String userToString(JSONObject jsonObject) {
@@ -115,8 +113,8 @@ public class App
             if (jsonObject.containsKey("occupation")) {
                 JSONObject t = (JSONObject) jsonObject.get("occupation");
                 result += "Текущая занятость: ";
-                if (((String) t.get("type")).equals("work")) result += "работа ";
-                else if (((String) t.get("type")).equals("school")) result += "ученик ";
+                if (t.get("type").equals("work")) result += "работа ";
+                else if (t.get("type").equals("school")) result += "ученик ";
                 else result += "студент ";
                 result += "в " + t.get("name") + "\n";
             }
