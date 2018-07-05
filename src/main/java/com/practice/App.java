@@ -25,14 +25,14 @@ public class App
         String id;
         boolean flag = true;
         do {
-            System.out.println("Enter id: ");
+            System.out.println("Введите id: ");
             id = reader.readLine();
             try {
-                flag = Integer.parseInt(id) < 0;
-                if (flag) System.out.println("Number must be positive, try again\n");
+                flag = Integer.parseInt(id) <= 0;
+                if (flag) System.out.println("id должен быть > 0, попробуйте снова\n");
             }
             catch (Exception ex) {
-                System.out.println("Bad number, try again\n");
+                System.out.println("Плохое число, попробуйте снова\n");
             }
         }
         while (flag);
@@ -63,10 +63,10 @@ public class App
             Object obj2 = new JSONParser().parse(response.toString());
             JSONObject jo = (JSONObject) obj2;
             if (jo.containsKey("error")) {
-                System.out.println("API error\n");
+                System.out.println("Ошибка API\n");
                 jo = (JSONObject) jo.get("error");
-                System.out.println("Error code: " + jo.get("error_code"));
-                System.out.println("Error message: " + jo.get("error_msg"));
+                System.out.println("Код ошибки: " + jo.get("error_code"));
+                System.out.println("Подробности: " + jo.get("error_msg"));
             }
             JSONArray jsonArray = (JSONArray) jo.get("response");
             for (int i = 0; i < jsonArray.size(); i++) {
