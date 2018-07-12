@@ -23,10 +23,8 @@ public class AppTest
         JSONObject jo = (JSONObject) obj2;
         JSONArray jsonArray = (JSONArray) jo.get("response");
         String result = "";
-        for (int i = 0; i < jsonArray.size(); i++) {
-            result += App.userToString((JSONObject) jsonArray.get(i));
-        }
         String cmp = "Имя: Вася\nФамилия: Пупкин";
         assertTrue(result.startsWith(cmp));
+        //@Mock Mockito
     }
 }

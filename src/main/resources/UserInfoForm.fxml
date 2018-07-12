@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.practice.controller.UserInfoFormController">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="status" layoutX="14.0" layoutY="141.0" />
+      <Label fx:id="bdate" layoutX="14.0" layoutY="168.0" />
+      <Label fx:id="sex" layoutX="14.0" layoutY="195.0" />
+      <Label fx:id="online" layoutX="14.0" layoutY="222.0" />
+      <Label fx:id="fullName" layoutX="14.0" layoutY="114.0" text="Имя фамилия" />
+   </children>
+</AnchorPane>
